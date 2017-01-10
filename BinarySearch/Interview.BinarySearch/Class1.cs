@@ -20,9 +20,9 @@ namespace Interview.BinarySearch
             int leftIdx = 0;
             int rightIdx = _list.Count;
 
-            while(leftIdx != rightIdx)
+            while(leftIdx < rightIdx)
             {
-                int midIdx = (int)(rightIdx - leftIdx) / 2;
+                int midIdx = leftIdx + (int)((rightIdx - leftIdx) / 2);
                 int midVal = _list[midIdx];
 
                 if (midVal == val)

@@ -14,7 +14,11 @@ namespace Interview.BinarySearch.Tests
         [TestMethod()]
         public void BinarySearchTest()
         {
-            Assert.Fail();
+            Class1 c = new Class1(new int[] { 1, 3, 5, 7, 9, 11, 13 });
+
+            int result = c.BinarySearch(5);
+
+            Assert.AreEqual<int>(2, result);
         }
     }
 }
