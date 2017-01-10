@@ -12,7 +12,7 @@ namespace Interview.BinarySearch.Tests
     public class Class1Tests
     {
         [TestMethod()]
-        public void BinarySearchTest()
+        public void BinarySearch_ElementInside()
         {
             Class1 c = new Class1(new int[] { 1, 3, 5, 7, 9, 11, 13 });
 
@@ -20,5 +20,7 @@ namespace Interview.BinarySearch.Tests
 
             Assert.AreEqual<int>(2, result);
         }
+
+        //todo: one element array, boundary element (first last), empty array, null, nonexisting element
     }
 }
