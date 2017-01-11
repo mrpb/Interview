@@ -18,7 +18,7 @@ namespace Interview.BinarySearch
         public int BinarySearch(int val)
         {
             int leftIdx = 0;
-            int rightIdx = _list.Count;
+            int rightIdx = _list.Count - 1;
 
             while(leftIdx < rightIdx)
             {
