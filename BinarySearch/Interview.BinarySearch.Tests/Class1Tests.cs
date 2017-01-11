@@ -42,6 +42,16 @@ namespace Interview.BinarySearch.Tests
         }
 
         [TestMethod]
+        public void BinarySearch_SearchForNonExistingElementInTwoElementsArray()
+        {
+            Class1 c = new Class1(new int[] { 7, 9 });
+
+            int result = c.BinarySearch(8);
+
+            Assert.AreEqual<int>(-1, result);
+        }
+
+        [TestMethod]
         public void BinarySearch_SearchForMaxElement()
         {
             Class1 c = new Class1(new int[] { 1, 3, 5, 7, 9, 11, 13 });
@@ -68,15 +78,25 @@ namespace Interview.BinarySearch.Tests
 
             int result = c.BinarySearch(1);
 
-            Assert.AreEqual<int>(2, result);
+            Assert.AreEqual<int>(3, result);
         }
 
         [TestMethod]
-        public void BinarySearch_SearchForNonexistingValue()
+        public void BinarySearch_SearchForNonexistingValueBiggerThanMax()
         {
             Class1 c = new Class1(new int[] { 1, 3, 5, 7, 9, 11, 13 });
 
             int result = c.BinarySearch(15);
+
+            Assert.AreEqual<int>(-1, result);
+        }
+
+        [TestMethod]
+        public void BinarySearch_SearchForNonexistingValueSmallerThanMin()
+        {
+            Class1 c = new Class1(new int[] { 1, 3, 5, 7, 9, 11, 13 });
+
+            int result = c.BinarySearch(0);
 
             Assert.AreEqual<int>(-1, result);
         }

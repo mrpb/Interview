@@ -19,10 +19,26 @@ namespace Interview.BinarySearch
         {
             int leftIdx = 0;
             int rightIdx = _list.Count - 1;
+            int listLength = rightIdx - leftIdx + 1;
+
+            if (listLength == 1 && _list[0] == val)
+                return 0;
 
             while(leftIdx < rightIdx)
             {
-                int midIdx = leftIdx + (int)((rightIdx - leftIdx) / 2);
+                listLength = rightIdx - leftIdx + 1;
+
+                if (listLength <= 2)
+                {
+                    if (_list[leftIdx] == val)
+                        return leftIdx;
+                    else if (_list[rightIdx] == val)
+                        return rightIdx;
+                    else
+                        return -1;
+                }
+
+                int midIdx = leftIdx + (int)(listLength / 2);
                 int midVal = _list[midIdx];
 
                 if (midVal == val)
