@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Interview.BinarySearch
 {
-    public class Class1
+    public class SimpleApproach : IBinarySearch
     {
         private List<int> _list;
 
-        public Class1(IEnumerable<int> values)
+        public SimpleApproach(IEnumerable<int> values)
         {
             _list = new List<int>(values);
         }

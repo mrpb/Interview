@@ -9,12 +9,33 @@ using System.Threading.Tasks;
 namespace Interview.BinarySearch.Tests
 {
     [TestClass]
-    public class Class1Tests
+    public class BinarySearchTests
     {
+        private enum SearchType
+        {
+            SimpleApproach
+        }
+
+        private static class SearchFactory
+        {
+            public static IBinarySearch CreateSearch(SearchType type, IEnumerable<int> values)
+            {
+                switch (type)
+                {
+                    case SearchType.SimpleApproach:
+                        return new SimpleApproach(values);
+                    default:
+                        return null;
+                }
+            }
+        }
+
+        private const SearchType _typeToTest = SearchType.SimpleApproach;
+
         [TestMethod]
         public void BinarySearch_SearchForExistingElementOddLength()
         {
-            Class1 c = new Class1(new int[] { 1, 3, 5, 7, 9, 11, 13 });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { 1, 3, 5, 7, 9, 11, 13 });
 
             int result = c.BinarySearch(5);
 
@@ -24,7 +45,7 @@ namespace Interview.BinarySearch.Tests
         [TestMethod]
         public void BinarySearch_SearchForExistingElementEvenLength()
         {
-            Class1 c = new Class1(new int[] { 1, 3, 5, 7, 9, 11 });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { 1, 3, 5, 7, 9, 11 });
 
             int result = c.BinarySearch(9);
 
@@ -34,7 +55,7 @@ namespace Interview.BinarySearch.Tests
         [TestMethod]
         public void BinarySearch_SearchForExistingElementInTwoElementsArray()
         {
-            Class1 c = new Class1(new int[] { 1, 3 });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { 1, 3 });
 
             int result = c.BinarySearch(3);
 
@@ -44,7 +65,7 @@ namespace Interview.BinarySearch.Tests
         [TestMethod]
         public void BinarySearch_SearchForNonExistingElementInTwoElementsArray()
         {
-            Class1 c = new Class1(new int[] { 7, 9 });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { 7, 9 });
 
             int result = c.BinarySearch(8);
 
@@ -54,7 +75,7 @@ namespace Interview.BinarySearch.Tests
         [TestMethod]
         public void BinarySearch_SearchForMaxElement()
         {
-            Class1 c = new Class1(new int[] { 1, 3, 5, 7, 9, 11, 13 });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { 1, 3, 5, 7, 9, 11, 13 });
 
             int result = c.BinarySearch(13);
 
@@ -64,7 +85,7 @@ namespace Interview.BinarySearch.Tests
         [TestMethod]
         public void BinarySearch_SearchForMinElement()
         {
-            Class1 c = new Class1(new int[] { 1, 3, 5, 7, 9, 11, 13 });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { 1, 3, 5, 7, 9, 11, 13 });
 
             int result = c.BinarySearch(1);
 
@@ -74,7 +95,7 @@ namespace Interview.BinarySearch.Tests
         [TestMethod]
         public void BinarySearch_SearchForExistingElementArrayWithEqualElements()
         {
-            Class1 c = new Class1(new int[] { 1, 1, 1, 1, 1, 1 });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { 1, 1, 1, 1, 1, 1 });
 
             int result = c.BinarySearch(1);
 
@@ -84,7 +105,7 @@ namespace Interview.BinarySearch.Tests
         [TestMethod]
         public void BinarySearch_SearchForNonexistingValueBiggerThanMax()
         {
-            Class1 c = new Class1(new int[] { 1, 3, 5, 7, 9, 11, 13 });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { 1, 3, 5, 7, 9, 11, 13 });
 
             int result = c.BinarySearch(15);
 
@@ -94,7 +115,7 @@ namespace Interview.BinarySearch.Tests
         [TestMethod]
         public void BinarySearch_SearchForNonexistingValueSmallerThanMin()
         {
-            Class1 c = new Class1(new int[] { 1, 3, 5, 7, 9, 11, 13 });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { 1, 3, 5, 7, 9, 11, 13 });
 
             int result = c.BinarySearch(0);
 
@@ -104,7 +125,7 @@ namespace Interview.BinarySearch.Tests
         [TestMethod]
         public void BinarySearch_SearchForExistingElementInOneElementArray()
         {
-            Class1 c = new Class1(new int[] { 1 });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { 1 });
 
             int result = c.BinarySearch(1);
 
@@ -114,7 +135,7 @@ namespace Interview.BinarySearch.Tests
         [TestMethod]
         public void BinarySearch_SearchForNonExistingElementInOneElementArray()
         {
-            Class1 c = new Class1(new int[] { 1 });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { 1 });
 
             int result = c.BinarySearch(2);
 
@@ -124,7 +145,7 @@ namespace Interview.BinarySearch.Tests
         [TestMethod]
         public void BinarySearch_SearchInEmptyArray()
         {
-            Class1 c = new Class1(new int[] { });
+            IBinarySearch c = SearchFactory.CreateSearch(_typeToTest, new int[] { });
 
             int result = c.BinarySearch(2);
 
