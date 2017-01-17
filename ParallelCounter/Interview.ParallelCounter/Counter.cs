@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Interview.ParallelCounter
 {
-    public class SimpleApproach
+    public class Counter : ICounter
     {
-        public int Counter { get; private set; }
+        public int Value { get; private set; }
 
         public void Increment()
         {
-            Counter += 1;
+            Value += 1;
         }
     }
 }

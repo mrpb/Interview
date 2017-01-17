@@ -9,15 +9,15 @@ using System.Threading;
 
 namespace Interview.ParallelCounter.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class SimpleApproachTests
     {
         private const int iterations = 100000;
 
-        [TestMethod()]
+        [TestMethod]
         public void IncrementTest_CountersAreEqual()
         {
-            SimpleApproach counter = new SimpleApproach();
+            ICounter counter = new CounterWithLock();
 
             using (CountdownEvent finish = new CountdownEvent(iterations))
             {
@@ -25,7 +25,7 @@ namespace Interview.ParallelCounter.Tests
                 {
                     ThreadPool.QueueUserWorkItem(x =>
                                                     {
-                                                        ((SimpleApproach)x).Increment();
+                                                        ((ICounter)x).Increment();
                                                         finish.Signal();
                                                     },
                                                 counter);
@@ -34,7 +34,7 @@ namespace Interview.ParallelCounter.Tests
                 finish.Wait();
             }
 
-            Assert.AreEqual(iterations, counter.Counter);
+            Assert.AreEqual(iterations, counter.Value);
         }
     }
 }

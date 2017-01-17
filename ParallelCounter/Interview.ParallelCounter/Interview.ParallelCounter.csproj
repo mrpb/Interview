@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SimpleApproach.cs" />
+    <Compile Include="CounterWithInterlocked.cs" />
+    <Compile Include="CounterWithLock.cs" />
+    <Compile Include="Counter.cs" />
+    <Compile Include="ICounter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
