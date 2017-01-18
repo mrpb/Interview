@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Interview.Palindrome
 {
-    public class Class1
+    public static class PalindromeValidation
     {
+        public static bool Validate(string input)
+        {
+            return true;
+        }
     }
 }
