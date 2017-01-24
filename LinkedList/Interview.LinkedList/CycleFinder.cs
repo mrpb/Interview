@@ -8,21 +8,24 @@ namespace Interview.LinkedList
 {
     public class CycleFinder
     {
-        LinkedList<int> _list;
-
-        public CycleFinder(IEnumerable<int> collection)
+        public static bool HasCycle<T>(LinkedList<T> list)
         {
-            _list = new LinkedList<int>(collection);
-        }
+            if (list.Head == null || list.Head.Next == null)
+                return false;
 
-        public bool HasCycle()
-        {
-            foreach (var item in _list)
+            LinkedListNode<T> turtle = list.Head;
+            LinkedListNode<T> rabbit = list.Head.Next;
+
+            while (turtle != rabbit)
             {
+                if (rabbit.Next == null || rabbit.Next.Next == null)
+                    return false;
 
+                turtle = turtle.Next;
+                rabbit = rabbit.Next.Next;
             }
 
-            return false;
+            return true;
         }
     }
 }

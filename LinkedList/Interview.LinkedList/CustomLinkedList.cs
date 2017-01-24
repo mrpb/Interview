@@ -7,32 +7,60 @@ using System.Threading.Tasks;
 
 namespace Interview.LinkedList
 {
-    public class CustomLinkedList<T> : IEnumerable<CustomLinkedListNode<T>>
+    public class LinkedList<T> : IEnumerable<LinkedListNode<T>>
     {
-        CustomLinkedListNode<T> _head;
-
-        public IEnumerator<CustomLinkedListNode<T>> GetEnumerator()
+        public LinkedList(IEnumerable<T> collection)
         {
-            if (_head == null)
-                return null;
+            foreach(T val in collection)
+            {
+                LinkedListNode<T> tail = null;
 
-            CustomLinkedListNode<T> 
+                if (Head == null)
+                {
+                    Head = new LinkedListNode<T>(val);
+                    tail = Head;
+                }
+                else
+                {
+                    tail.Next = new LinkedListNode<T>(val);
+                    tail = tail.Next;
+                }
+            }
+        }
 
-            while()
+        public LinkedListNode<T> Head { get; private set; }
+
+        public IEnumerator<LinkedListNode<T>> GetEnumerator()
+        {
+            if (Head == null)
+                yield return null;
+
+            LinkedListNode<T> currentNode = Head;
+
+            while(currentNode != null)
+            {
+                yield return currentNode;
+                currentNode = currentNode.Next;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 
-    public class CustomLinkedListNode<T>
+    public class LinkedListNode<T>
     {
-        public T NodeValue { get; set; }
+        public LinkedListNode(T val)
+        {
+            NodeValue = val;
+        }
 
-        public CustomLinkedListNode<T> Previous { get; set; }
+        public T NodeValue { get; private set; }
 
-        public CustomLinkedListNode<T> Next { get; set; }
+        public LinkedListNode<T> Previous { get; set; }
+
+        public LinkedListNode<T> Next { get; set; }
     }
 }
