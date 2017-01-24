@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LinkedList", "LinkedList", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interview.LinkedList", "LinkedList\Interview.LinkedList\Interview.LinkedList.csproj", "{9C92C863-0CFF-45FA-9ED7-D5C2EF71E76F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interview.LinkedList.Tests", "Interview.LinkedList.Tests\Interview.LinkedList.Tests.csproj", "{FB4823C1-CA45-418A-BDF9-43866AE3BA2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interview.LinkedList.Tests", "LinkedList\Interview.LinkedList.Tests\Interview.LinkedList.Tests.csproj", "{FB4823C1-CA45-418A-BDF9-43866AE3BA2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
