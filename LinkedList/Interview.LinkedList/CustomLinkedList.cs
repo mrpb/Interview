@@ -11,10 +11,13 @@ namespace Interview.LinkedList
     {
         public LinkedList(IEnumerable<T> collection)
         {
-            foreach(T val in collection)
-            {
-                LinkedListNode<T> tail = null;
+            if (collection == null)
+                return;
 
+            LinkedListNode<T> tail = null;
+
+            foreach (T val in collection)
+            {
                 if (Head == null)
                 {
                     Head = new LinkedListNode<T>(val);
@@ -58,8 +61,6 @@ namespace Interview.LinkedList
         }
 
         public T NodeValue { get; private set; }
-
-        public LinkedListNode<T> Previous { get; set; }
 
         public LinkedListNode<T> Next { get; set; }
     }

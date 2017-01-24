@@ -10,7 +10,7 @@ namespace Interview.LinkedList
     {
         public static bool HasCycle<T>(LinkedList<T> list)
         {
-            if (list.Head == null || list.Head.Next == null)
+            if (list == null || list.Head == null || list.Head.Next == null)
                 return false;
 
             LinkedListNode<T> turtle = list.Head;
