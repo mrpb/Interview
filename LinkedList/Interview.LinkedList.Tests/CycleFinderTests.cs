@@ -54,13 +54,34 @@ namespace Interview.LinkedList.Tests
         [TestMethod]
         public void HasCycleTest_ListWithACycle()
         {
-            Assert.Fail();
+            LinkedList<int> list = new LinkedList<int>(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+
+            LinkedListNode<int> middle = null;
+
+            foreach (LinkedListNode<int> node in list)
+            {
+                if (node.NodeValue == 4)
+                    middle = node;
+                else if (node.Next == null)
+                {
+                    node.Next = middle;
+                    break;
+                }
+            }
+
+            bool result = CycleFinder.HasCycle<int>(list);
+
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void HasCycleTest_ListWithoutACycle()
         {
-            Assert.Fail();
+            LinkedList<int> list = new LinkedList<int>(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+
+            bool result = CycleFinder.HasCycle<int>(list);
+
+            Assert.IsFalse(result);
         }
     }
 }
